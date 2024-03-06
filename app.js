@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use((req, res, next) => {
-  res.status(200).send('Not found');
+  res.status(200).send('Success.');
 });
 
 app.get('/', (req, res) => {
