@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 function generateTxnID(length) {
-  const chars = '0123456789ABCDEF';
+  const chars = '0123456789abcdef';
   let hex = '';
   for (let i = 0; i < length; i++) {
     hex += chars[Math.floor(Math.random() * chars.length)];
@@ -19,7 +19,7 @@ function generateTxnID(length) {
 
 app.use((req, res, next) => {
   res.status(200).send('Success.');
-  console.log(req.method, req.url, generateTxnID(64));
+  console.log(req.method, req.url, req.body, generateTxnID(64));
 });
 
 app.get('/', (req, res) => {
