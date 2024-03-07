@@ -8,8 +8,18 @@ const network = require('./fabric/network');
 app.use(express.json());
 app.use(cors());
 
+function generateTxnID(length) {
+  const chars = '0123456789ABCDEF';
+  let hex = '';
+  for (let i = 0; i < length; i++) {
+    hex += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return hex;
+}
+
 app.use((req, res, next) => {
   res.status(200).send('Success.');
+  console.log(req.method, req.url, generateTxnID(64));
 });
 
 app.get('/', (req, res) => {
